@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dule8fkathy4c"]
+
+[ext_resource type="Script" path="res://Bullets/purple_bullet.gd" id="1_06khn"]
+[ext_resource type="Texture2D" uid="uid://kjqgsy16i76y" path="res://Bullets/Bullet_Purple.png" id="2_w871n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ncdr"]
+size = Vector2(46, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hc6c0"]
+size = Vector2(46, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_igj3p"]
+radius = 204.083
+
+[node name="Purple Bullet" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_06khn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_w871n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2ncdr")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 35
+collision_mask = 35
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
+shape = SubResource("RectangleShape2D_hc6c0")
+
+[node name="AreaofAffect" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaofAffect"]
+shape = SubResource("CircleShape2D_igj3p")
+disabled = true

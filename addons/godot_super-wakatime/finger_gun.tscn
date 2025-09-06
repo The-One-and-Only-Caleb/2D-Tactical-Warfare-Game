@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxxgi318yu3e8"]
+
+[ext_resource type="Script" path="res://finger_gun.gd" id="1_63kmx"]
+[ext_resource type="Texture2D" uid="uid://bbx807vk882vq" path="res://Finger Gun.png" id="2_kxg8h"]
+
+[node name="Pivot" type="Node2D"]
+script = ExtResource("1_63kmx")
+
+[node name="Finger_Gun" type="Sprite2D" parent="."]
+position = Vector2(199, -2)
+texture = ExtResource("2_kxg8h")
+
+[node name="Barrel" type="Marker2D" parent="Finger_Gun"]
+position = Vector2(73, 2)
+
+[node name="Shoot_Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Shoot_Timer" to="." method="_on_shoot_timer_timeout"]
