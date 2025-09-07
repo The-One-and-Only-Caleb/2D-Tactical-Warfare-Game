@@ -26,6 +26,6 @@ func _physics_process(delta: float) -> void:
 		GameScript.paint_infusion = false	
 		queue_free()
 		
-	# Paint infusion upgrade
+	# Paint Infusion upgrade
 	#if paint_infusion == true:
 		
