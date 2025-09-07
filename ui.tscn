@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://djxshigifx4rx"]
+[gd_scene load_steps=8 format=3 uid="uid://iw5axo36sipb"]
 
 [ext_resource type="Script" path="res://ui.gd" id="1_fweh5"]
 [ext_resource type="Texture2D" uid="uid://dwrmrsu78i5po" path="res://Bullets/Bullet_Red.png" id="2_0hsly"]
@@ -86,3 +86,4 @@ text = "Upgrade 3"
 autowrap_mode = 3
 
 [connection signal="pressed" from="Leveling_up_screen/Upgrade1" to="." method="_on_upgrade_1_pressed"]
+[connection signal="pressed" from="Leveling_up_screen/Upgrade2" to="." method="_on_upgrade_2_pressed"]

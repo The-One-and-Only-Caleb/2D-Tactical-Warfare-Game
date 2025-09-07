@@ -26,6 +26,8 @@ var leveling_up = false
 var paused = false
 var bullet_leveled = ""
 
+var paint_infusion = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

@@ -56,3 +56,11 @@ func _on_upgrade_1_pressed() -> void:
 				GameScript.purple_bullet_upgrades["Paint Splash"] = {"level": 1, "colour": "purple"}
 				GameScript.leveling_up = false
 				GameScript.paused = false
+
+
+func _on_upgrade_2_pressed() -> void:
+	if GameScript.bullet_leveled == "purple":
+			if GameScript.purple_bullet_level == 2:
+				GameScript.purple_bullet_upgrades["Paint Infusion"] = {"level": 1, "colour": "purple"}
+				GameScript.leveling_up = false
+				GameScript.paused = false
