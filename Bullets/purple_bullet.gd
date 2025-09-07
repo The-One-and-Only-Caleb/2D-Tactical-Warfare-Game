@@ -27,5 +27,5 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 		
 	# Paint infusion upgrade
-	if paint_infusion == true:
+	#if paint_infusion == true:
 		
