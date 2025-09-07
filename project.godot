@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Shiba Arcade Project"
+config/name="2D Tactical War Game"
 run/main_scene="res://level.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
