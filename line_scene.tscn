@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsorqpeo6fm4"]
+
+[ext_resource type="Script" path="res://line_scene.gd" id="1_f683u"]
+[ext_resource type="PackedScene" uid="uid://ditc3lq1ava0i" path="res://control_point.tscn" id="2_y4flx"]
+
+[node name="Line_Scene" type="Node2D"]
+script = ExtResource("1_f683u")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 100, 0, 200, 0, 300)
+
+[node name="ControlPoint" parent="." instance=ExtResource("2_y4flx")]
+position = Vector2(208, 187)
+
+[node name="ControlPoint2" parent="." instance=ExtResource("2_y4flx")]
+position = Vector2(100, 200)
