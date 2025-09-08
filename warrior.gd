@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const speed = 300.0
+const speed = 400.0
 
 var troop_number
 var total_troop_count
@@ -17,11 +17,12 @@ func init(number, count, start, end) -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	start_point = get_parent().get_node("Line2D").get_point_position(0)
-	
-	end_point = get_parent().get_node("Line2D").get_point_position(1)
+	var line = get_parent().get_node("Line2D")
+	var start_point = line.to_global(line.get_point_position(0))
+	var end_point = line.to_global(line.get_point_position(1))
+
 	# Calculate how far along the segment this troop should be placed
-	var placement_ratio = float(troop_number) / (total_troop_count - 1)
+	var placement_ratio = 1 - float(troop_number) / (total_troop_count - 1)
 	
 	# Use linear interpolation to find the exact position
 	var target_position = start_point.lerp(end_point, placement_ratio)
@@ -36,7 +37,6 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		global_position = target_position  # Snap to final position
 	
-	print(target_position)
 	move_and_slide()
 
 	

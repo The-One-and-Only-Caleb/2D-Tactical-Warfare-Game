@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpjxgc34ctydl"]
+
+[ext_resource type="PackedScene" uid="uid://dsorqpeo6fm4" path="res://line_scene.tscn" id="1_4n6fj"]
+
+[node name="Battlefield" type="Node2D"]
+
+[node name="Line_Scene" parent="." instance=ExtResource("1_4n6fj")]
+position = Vector2(96, 29)
+
+[node name="Line_Scene2" parent="." instance=ExtResource("1_4n6fj")]
+position = Vector2(344, 321)
+
+[node name="Line_Scene3" parent="." instance=ExtResource("1_4n6fj")]
+position = Vector2(476, -1)

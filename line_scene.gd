@@ -2,7 +2,9 @@ extends Node2D
 
 var control_points = []
 
-var troops_assigned = 0
+var troops_count = 0
+
+var troop_assigned = 8
 
 func _ready():
 	var line = $Line2D
@@ -14,15 +16,19 @@ func _ready():
 		initial_points.append(cp.global_position)
 	$Line2D.points = initial_points
 	
-	var troop = preload("res://warrior.tscn").instantiate()
-	troop.init(1, 2, $Line2D.get_point_position(0), $Line2D.get_point_position(1))  # Pass index and total count
-	add_child(troop)
-	troop.global_position = global_position
+	spawn_troops()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	for i in control_points.size():
-		$Line2D.set_point_position(i, control_points[i].global_position)
+	$Line2D.set_point_position(0, $ControlPoint.position)
+	$Line2D.set_point_position(1, $ControlPoint2.position)
 		
-	
+func spawn_troops():
+	for i in range(0, troop_assigned):
+		var troop = preload("res://warrior.tscn").instantiate()
+		troop.init(troops_count, troop_assigned, $Line2D.get_point_position(0), $Line2D.get_point_position(1))  # Pass index and total count
+		add_child(troop)
+		troop.global_position = $Line2D.global_position
+		troops_count += 1
+		
