@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bagjpv2h6hgig"]
+
+[ext_resource type="Script" path="res://line_scene.gd" id="1_ik7us"]
+[ext_resource type="PackedScene" uid="uid://chcxdj8416ps2" path="res://enemy_control_point.tscn" id="2_xy4u2"]
+
+[node name="Line2D" type="Line2D"]
+points = PackedVector2Array(0, 0, 0, 100)
+script = ExtResource("1_ik7us")
+
+[node name="ControlPoint" parent="." instance=ExtResource("2_xy4u2")]
+position = Vector2(150, 127)
+
+[node name="ControlPoint2" parent="." instance=ExtResource("2_xy4u2")]
+position = Vector2(248, 193)
