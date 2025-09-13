@@ -6,6 +6,7 @@ var troops_count = 0
 
 var troop_assigned = 8
 
+
 func _ready():
 	points = [Vector2(100, 200), Vector2(100, 300)]
 	control_points = [$ControlPoint, $ControlPoint2]

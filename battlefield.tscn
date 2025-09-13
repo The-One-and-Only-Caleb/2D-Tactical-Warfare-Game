@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpjxgc34ctydl"]
+[gd_scene load_steps=2 format=3 uid="uid://cpjxgc34ctydl"]
 
 [ext_resource type="PackedScene" uid="uid://dsorqpeo6fm4" path="res://line_scene.tscn" id="1_4n6fj"]
-[ext_resource type="PackedScene" uid="uid://dbvfhx4kv0yl3" path="res://enemy_ai.tscn" id="2_a40b1"]
 
 [node name="Battlefield" type="Node2D"]
 
@@ -13,6 +12,3 @@ position = Vector2(53, 318)
 
 [node name="Line_Scene3" parent="." instance=ExtResource("1_4n6fj")]
 position = Vector2(106, 149)
-
-[node name="Enemy_AI" parent="." instance=ExtResource("2_a40b1")]
-position = Vector2(2775, 293)

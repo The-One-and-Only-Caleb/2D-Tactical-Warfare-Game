@@ -1,20 +1,70 @@
-[gd_scene load_steps=4 format=3 uid="uid://qgcvmpip48n7"]
+[gd_scene load_steps=11 format=3 uid="uid://qgcvmpip48n7"]
 
 [ext_resource type="Script" path="res://warrior.gd" id="1_s26c5"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_6oxs8"]
-radius = 5.0
-height = 10.0
+[ext_resource type="Texture2D" uid="uid://d36lb4y12ktb1" path="res://Top Down Soldier Attack-Sheet.png" id="2_thm0g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_435w8"]
-radius = 5.0
+radius = 6.08276
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vwcb"]
+atlas = ExtResource("2_thm0g")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3x1yl"]
+atlas = ExtResource("2_thm0g")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf47b"]
+atlas = ExtResource("2_thm0g")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fp010"]
+atlas = ExtResource("2_thm0g")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j5vi"]
+atlas = ExtResource("2_thm0g")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cklq"]
+atlas = ExtResource("2_thm0g")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mpmio"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vwcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3x1yl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf47b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fp010")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j5vi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cklq")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}]
 
 [node name="Warrior" type="CharacterBody2D"]
+scale = Vector2(2, 2)
 script = ExtResource("1_s26c5")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-modulate = Color(0, 0.74902, 0.309804, 1)
-mesh = SubResource("SphereMesh_6oxs8")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
 shape = SubResource("CircleShape2D_435w8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mpmio")
+animation = &"Attack"
+frame_progress = 0.0489243
