@@ -7,10 +7,10 @@ radius = 20.0
 height = 40.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a288c"]
-radius = 10.0499
+radius = 21.0
 
 [node name="ControlPoint" type="Area2D"]
-collision_layer = 9
+collision_layer = 64
 script = ExtResource("1_ikdqy")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]

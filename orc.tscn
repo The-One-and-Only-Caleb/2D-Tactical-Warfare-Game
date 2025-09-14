@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvty1hlvmslmd"]
+[gd_scene load_steps=16 format=3 uid="uid://cvty1hlvmslmd"]
 
+[ext_resource type="Script" path="res://orc.gd" id="1_34f5p"]
 [ext_resource type="Texture2D" uid="uid://do3feapahq30k" path="res://Birds eye Orc Attack-Sheet.png" id="1_au7pc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_swrbo"]
@@ -41,19 +42,131 @@ animations = [{
 "texture": SubResource("AtlasTexture_4o4bu")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Attack",
 "speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sf566"]
 radius = 18.2483
 
+[sub_resource type="Animation" id="Animation_v81ai"]
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.3, 0.366667, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 2, 1, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Attack"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_vunrs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_maleo"]
+_data = {
+"Attack": SubResource("Animation_v81ai"),
+"RESET": SubResource("Animation_vunrs")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34wsi"]
+size = Vector2(19, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_023ol"]
+radius = 18.3848
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vue0g"]
+radius = 148.337
+
 [node name="Orc" type="CharacterBody2D"]
+collision_layer = 17
+script = ExtResource("1_34f5p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_kxnyl")
-frame_progress = 0.013681
+animation = &"Attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sf566")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_maleo")
+}
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(15, 2)
+shape = SubResource("RectangleShape2D_34wsi")
+disabled = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_023ol")
+debug_color = Color(0.963461, 0.176614, 0.196019, 0.42)
+
+[node name="Detectionbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detectionbox"]
+shape = SubResource("CircleShape2D_vue0g")
+debug_color = Color(0.716, 0.717, 0.988, 0.42)
+
+[node name="Rangebox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rangebox"]
+position = Vector2(15, 2)
+shape = SubResource("RectangleShape2D_34wsi")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

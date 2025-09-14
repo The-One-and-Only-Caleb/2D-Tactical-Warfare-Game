@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpjxgc34ctydl"]
+[gd_scene load_steps=3 format=3 uid="uid://cpjxgc34ctydl"]
 
 [ext_resource type="PackedScene" uid="uid://dsorqpeo6fm4" path="res://line_scene.tscn" id="1_4n6fj"]
+[ext_resource type="PackedScene" uid="uid://cvty1hlvmslmd" path="res://orc.tscn" id="2_mx1wh"]
 
 [node name="Battlefield" type="Node2D"]
 
@@ -12,3 +13,18 @@ position = Vector2(53, 318)
 
 [node name="Line_Scene3" parent="." instance=ExtResource("1_4n6fj")]
 position = Vector2(106, 149)
+
+[node name="Orc" parent="." instance=ExtResource("2_mx1wh")]
+position = Vector2(367, 188)
+
+[node name="Orc2" parent="." instance=ExtResource("2_mx1wh")]
+position = Vector2(461, 337)
+
+[node name="Orc3" parent="." instance=ExtResource("2_mx1wh")]
+position = Vector2(507, 243)
+
+[node name="Orc4" parent="." instance=ExtResource("2_mx1wh")]
+position = Vector2(483, 440)
+
+[node name="Orc5" parent="." instance=ExtResource("2_mx1wh")]
+position = Vector2(449, 259)
