@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsorqpeo6fm4"]
+[gd_scene load_steps=4 format=3 uid="uid://dsorqpeo6fm4"]
 
-[ext_resource type="Script" path="res://line_scene.gd" id="1_qgc7l"]
+[ext_resource type="Script" path="res://Lines/line_scene.gd" id="1_qgc7l"]
+[ext_resource type="PackedScene" uid="uid://qgcvmpip48n7" path="res://Troops/warrior.tscn" id="2_toalh"]
 [ext_resource type="PackedScene" uid="uid://ditc3lq1ava0i" path="res://control_point.tscn" id="2_y4flx"]
 
-[node name="Line2D" type="Line2D"]
+[node name="Warrior Line" type="Line2D"]
 points = PackedVector2Array(0, 0, 0, 100)
 script = ExtResource("1_qgc7l")
+troop = ExtResource("2_toalh")
+total_troops = 8
 
 [node name="ControlPoint" parent="." instance=ExtResource("2_y4flx")]
 position = Vector2(208, 187)

@@ -8,7 +8,7 @@ var total_troop_count
 
 var start_point
 var end_point
-var health = 5
+@export var health = 5
 
 func init(number, count, start, end) -> void:
 	troop_number = number

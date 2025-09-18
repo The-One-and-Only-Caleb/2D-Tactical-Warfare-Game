@@ -4,7 +4,8 @@ var control_points = []
 
 var troops_count = 0
 
-var troop_assigned = 8
+@export var troop: PackedScene
+@export var total_troops: int
 
 
 func _ready():
@@ -25,9 +26,9 @@ func _process(delta: float) -> void:
 	set_point_position(1, $ControlPoint2.position)
 		
 func spawn_troops():
-	for i in range(0, troop_assigned):
-		var troop = preload("res://warrior.tscn").instantiate()
-		troop.init(troops_count, troop_assigned, get_point_position(0), get_point_position(1))  # Pass index and total count
-		add_child(troop)
+	for i in range(0, total_troops):
+		var new_troop = troop.instantiate()
+		new_troop.init(troops_count, total_troops, get_point_position(0), get_point_position(1))  # Pass index and total count
+		add_child(new_troop)
 		troops_count += 1
 		

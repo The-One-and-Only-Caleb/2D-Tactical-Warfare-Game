@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d36lb4y12ktb1"
-path="res://.godot/imported/Top Down Soldier Attack-Sheet.png-c15f7f1ada19502867d7dff8c312d582.ctex"
+uid="uid://ei02cd2xvama"
+path="res://.godot/imported/Birds eye Hammer Knight Attack-Sheet.png-113add86e72b46e4418bb3fd68ac0b73.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Top Down Soldier Attack-Sheet.png"
-dest_files=["res://.godot/imported/Top Down Soldier Attack-Sheet.png-c15f7f1ada19502867d7dff8c312d582.ctex"]
+source_file="res://Troops/Birds eye Hammer Knight Attack-Sheet.png"
+dest_files=["res://.godot/imported/Birds eye Hammer Knight Attack-Sheet.png-113add86e72b46e4418bb3fd68ac0b73.ctex"]
 
 [params]
 

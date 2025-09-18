@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2xrgxhwbr3i3"]
+
+[ext_resource type="Script" path="res://Lines/line_scene.gd" id="1_0jrtr"]
+[ext_resource type="PackedScene" uid="uid://drjbugic557le" path="res://Troops/hammer_knight.tscn" id="2_3jamw"]
+[ext_resource type="PackedScene" uid="uid://ditc3lq1ava0i" path="res://control_point.tscn" id="3_3hdci"]
+
+[node name="Warrior Line" type="Line2D"]
+points = PackedVector2Array(0, 0, 0, 100)
+script = ExtResource("1_0jrtr")
+troop = ExtResource("2_3jamw")
+total_troops = 2
+
+[node name="ControlPoint" parent="." instance=ExtResource("3_3hdci")]
+position = Vector2(208, 187)
+
+[node name="ControlPoint2" parent="." instance=ExtResource("3_3hdci")]
+position = Vector2(100, 200)

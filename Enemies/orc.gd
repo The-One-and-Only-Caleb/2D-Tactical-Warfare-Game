@@ -4,7 +4,7 @@ var speed = 300.0
 var health = 4
 
 func _physics_process(delta: float) -> void:
-	if not $Rangebox.get_overlapping_bodies():
+	if not $Rangebox.get_overlapping_bodies() and $Detectionbox.get_overlapping_bodies():
 		$AnimationPlayer.stop()
 		var bodies = $Detectionbox.get_overlapping_bodies()
 		var nearest = null
@@ -21,10 +21,13 @@ func _physics_process(delta: float) -> void:
 			look_at(nearest.global_position)
 		else:
 			velocity = Vector2.ZERO
-	else:
+	elif $Rangebox.get_overlapping_bodies():
 		velocity = Vector2.ZERO
 		if not $AnimationPlayer.is_playing():
 			$AnimationPlayer.play("Attack")
+	else:
+		velocity.x = -speed
+		
 	move_and_slide()
 
 

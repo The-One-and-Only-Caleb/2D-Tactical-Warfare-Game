@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://cvty1hlvmslmd"]
 
-[ext_resource type="Script" path="res://orc.gd" id="1_34f5p"]
-[ext_resource type="Texture2D" uid="uid://do3feapahq30k" path="res://Birds eye Orc Attack-Sheet.png" id="1_au7pc"]
+[ext_resource type="Script" path="res://Enemies/orc.gd" id="1_34f5p"]
+[ext_resource type="Texture2D" uid="uid://do3feapahq30k" path="res://Enemies/Birds eye Orc Attack-Sheet.png" id="1_au7pc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_swrbo"]
 atlas = ExtResource("1_au7pc")
