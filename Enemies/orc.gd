@@ -3,7 +3,10 @@ extends CharacterBody2D
 var speed = 300.0
 var health = 4
 
+
 func _physics_process(delta: float) -> void:
+	var enemy_objective = get_tree().root.get_children(false)[0].get_node("Enemy_objective")
+	
 	if not $Rangebox.get_overlapping_bodies() and $Detectionbox.get_overlapping_bodies():
 		$AnimationPlayer.stop()
 		var bodies = $Detectionbox.get_overlapping_bodies()
@@ -26,7 +29,8 @@ func _physics_process(delta: float) -> void:
 		if not $AnimationPlayer.is_playing():
 			$AnimationPlayer.play("Attack")
 	else:
-		velocity.x = -speed
+		pass
+		
 		
 	move_and_slide()
 

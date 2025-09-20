@@ -169,4 +169,6 @@ collision_mask = 8
 position = Vector2(15, 2)
 shape = SubResource("RectangleShape2D_34wsi")
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
