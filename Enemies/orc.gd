@@ -2,11 +2,11 @@ extends CharacterBody2D
 
 var speed = 300.0
 var health = 4
-
+var enemy_objective: Node2D
 
 func _physics_process(delta: float) -> void:
-	var enemy_objective = get_tree().root.get_children(false)[0].get_node("Enemy_objective")
-	
+	enemy_objective = get_tree().root.get_children(false)[0].get_node("Enemy_objective")
+	print(enemy_objective.global_position)
 	if not $Rangebox.get_overlapping_bodies() and $Detectionbox.get_overlapping_bodies():
 		$AnimationPlayer.stop()
 		var bodies = $Detectionbox.get_overlapping_bodies()
@@ -29,13 +29,22 @@ func _physics_process(delta: float) -> void:
 		if not $AnimationPlayer.is_playing():
 			$AnimationPlayer.play("Attack")
 	else:
-		pass
-		
+		var dir = to_local($NavigationAgent2D.get_next_path_position()).normalized()
+		velocity = dir * speed
 		
 	move_and_slide()
+
+func makepath():
+	$NavigationAgent2D.target_position = enemy_objective.global_position
+	
+
 
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	health -= 1
 	if health < 1:
 		queue_free()
+
+
+func _on_timer_timeout() -> void:
+	makepath()
