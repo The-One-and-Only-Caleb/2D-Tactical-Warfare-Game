@@ -4,9 +4,13 @@ var speed = 300.0
 var health = 4
 var enemy_objective: Node2D
 
+func _ready() -> void:
+	rotation_degrees = 180
+	await $NavigationAgent2D.ready
+	makepath()
+
 func _physics_process(delta: float) -> void:
 	enemy_objective = get_tree().root.get_children(false)[0].get_node("Enemy_objective")
-	print(enemy_objective.global_position)
 	if not $Rangebox.get_overlapping_bodies() and $Detectionbox.get_overlapping_bodies():
 		$AnimationPlayer.stop()
 		var bodies = $Detectionbox.get_overlapping_bodies()
@@ -29,9 +33,13 @@ func _physics_process(delta: float) -> void:
 		if not $AnimationPlayer.is_playing():
 			$AnimationPlayer.play("Attack")
 	else:
-		var dir = to_local($NavigationAgent2D.get_next_path_position()).normalized()
-		velocity = dir * speed
-		
+		var target = $NavigationAgent2D.get_next_path_position()
+		var direction = (target - global_position).normalized()
+
+		velocity = direction * speed
+
+
+		rotation = lerp_angle(rotation, direction.angle(), 0.1)
 	move_and_slide()
 
 func makepath():

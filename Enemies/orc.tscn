@@ -175,7 +175,7 @@ shape = SubResource("RectangleShape2D_34wsi")
 debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.3
 autostart = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
