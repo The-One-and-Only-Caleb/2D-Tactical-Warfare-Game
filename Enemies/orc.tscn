@@ -172,7 +172,6 @@ position = Vector2(15, 2)
 shape = SubResource("RectangleShape2D_34wsi")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
