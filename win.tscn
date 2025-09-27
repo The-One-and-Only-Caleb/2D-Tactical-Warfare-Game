@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://v2h0fxrn5v18"]
+
+[node name="Win" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 390.0
+offset_top = 126.0
+offset_right = 813.0
+offset_bottom = 263.0
+theme_override_font_sizes/font_size = 100
+text = "You Win!"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 107.0
+offset_top = 316.0
+offset_right = 1157.0
+offset_bottom = 385.0
+theme_override_font_sizes/font_size = 50
+text = "Thank you for playing this buggy prototype!"

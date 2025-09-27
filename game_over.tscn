@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://otyxwciauijn"]
+
+[node name="Game Over" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 324.0
+offset_top = 109.0
+offset_right = 867.0
+offset_bottom = 246.0
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 365.0
+offset_top = 265.0
+offset_right = 835.0
+offset_bottom = 307.0
+theme_override_font_sizes/font_size = 30
+text = "You weren't able to hold the line
+"

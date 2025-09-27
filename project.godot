@@ -11,9 +11,17 @@ config_version=5
 [application]
 
 config/name="2D Warfare Project"
-run/main_scene="res://battlefield.tscn"
+run/main_scene="res://Levels/level_1.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameScript="*res://game_script.gd"
+
+[display]
+
+window/size/mode=2
 
 [editor]
 
@@ -40,3 +48,4 @@ right_click={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"

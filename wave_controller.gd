@@ -11,14 +11,32 @@ var wave_in_progress := false
 func _ready():
 	start_wave(0)
 	print("wave started")
+	
+func _process(delta: float) -> void:
+	if wave_in_progress == false and current_wave_index < waves.size():
+		current_wave_index += 1
+		start_wave(current_wave_index)
+		wave_in_progress = true
+	#elif wave_in_progress == false and current_wave_index > waves.size() - 1:
+		#print("level finished")
+		#GameScript.level_finished = true
 
 func start_wave(index: int):
+	wave_in_progress = true
+	print(index)
+	print(waves.size())
 	if index >= waves.size():
 		print("Invalid wave index")
 		return
 
 	var wave = waves[index]
-	clear_active_timers()
+	
+	var wave_timer = Timer.new()
+	wave_timer.wait_time = waves[current_wave_index].duration
+	wave_timer.autostart = true
+	wave_timer.one_shot = true
+	add_child(wave_timer)
+	wave_timer.connect("timeout", Callable(self, "on_wave_timer_timeout").bind(wave_timer))
 
 	for group in wave.enemies:
 		print("creating timer")
@@ -31,22 +49,19 @@ func start_wave(index: int):
 		timer.autostart = true
 		add_child(timer)
 		active_timers.append(timer)
+		print("Timer created for group with count:", group.count)
 
 		# Capture group reference for this timer
 		timer.connect("timeout", Callable(self, "_on_enemy_timer_timeout").bind(group, timer))
 
 func _on_enemy_timer_timeout(group: EnemySpawnData, timer: Timer):
+	group.spawned += 1
 	if group.spawned >= group.count:
 		timer.stop()
 		timer.queue_free()
 		active_timers.erase(timer)
+	print("Timer fired for group:", group)
 
-		# Check if all timers are done
-		if active_timers.is_empty() and wave_in_progress:
-			wave_in_progress = false
-			print("Wave", current_wave_index, "complete!")
-			start_wave(current_wave_index + 1)
-		return
 
 	var enemy = group.enemy_scene.instantiate()
 	add_child(enemy)
@@ -56,12 +71,16 @@ func _on_enemy_timer_timeout(group: EnemySpawnData, timer: Timer):
 	group.spawned += 1
 	print("Spawned enemy")
 
+func on_wave_timer_timeout(wave_timer: Timer):
+	wave_in_progress = false
+	
+	current_wave_index += 1
+	if current_wave_index < waves.size():
+		start_wave(current_wave_index)
+	else:
+		print("All waves completed")
+		GameScript.level_finished = true
 
-func clear_active_timers():
-	for timer in active_timers:
-		timer.stop()
-		timer.queue_free()
-	active_timers.clear()
 
 			
 			

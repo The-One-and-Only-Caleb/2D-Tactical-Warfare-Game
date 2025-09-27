@@ -11,7 +11,7 @@ func _ready() -> void:
 	makepath()
 
 func _physics_process(delta: float) -> void:
-	enemy_objective = get_tree().root.get_children(false)[0].get_node("Enemy_objective")
+	var enemy_objective = get_tree().current_scene.get_node("Enemy_objective")
 	if not $Rangebox.get_overlapping_bodies() and $Detectionbox.get_overlapping_bodies():
 		$AnimationPlayer.stop()
 		var bodies = $Detectionbox.get_overlapping_bodies()
@@ -38,12 +38,17 @@ func _physics_process(delta: float) -> void:
 		var direction = (target - global_position).normalized()
 
 		velocity = direction * speed
+		
+		if global_position.distance_to(enemy_objective.global_position) < 5:
+			GameScript.health -= 1
+			queue_free()
 
 
 		rotation = lerp_angle(rotation, direction.angle(), 0.1)
 	move_and_slide()
 
 func makepath():
+	enemy_objective = get_tree().current_scene.get_node("Enemy_objective")
 	$NavigationAgent2D.target_position = enemy_objective.global_position
 	
 

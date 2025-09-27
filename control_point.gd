@@ -11,7 +11,7 @@ var drag_offset := Vector2.ZERO
 func _physics_process(delta: float) -> void:
 	
 	if dragging == true:
-		global_position = get_viewport().get_mouse_position()
+		global_position = get_global_mouse_position()
 
 	if mouse_on == true and Input.is_action_pressed("left_click") == true:
 		dragging = true
