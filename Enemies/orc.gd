@@ -5,7 +5,6 @@ var health = 4
 var enemy_objective: Node2D
 
 func _ready() -> void:
-	print("spawned in")
 	rotation_degrees = 180
 	await $NavigationAgent2D.ready
 	makepath()

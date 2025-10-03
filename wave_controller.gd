@@ -10,7 +10,6 @@ var wave_in_progress := false
 
 func _ready():
 	start_wave(0)
-	print("wave started")
 	
 func _process(delta: float) -> void:
 	if wave_in_progress == false and current_wave_index < waves.size():
@@ -23,10 +22,7 @@ func _process(delta: float) -> void:
 
 func start_wave(index: int):
 	wave_in_progress = true
-	print(index)
-	print(waves.size())
 	if index >= waves.size():
-		print("Invalid wave index")
 		return
 
 	var wave = waves[index]
@@ -39,7 +35,6 @@ func start_wave(index: int):
 	wave_timer.connect("timeout", Callable(self, "on_wave_timer_timeout").bind(wave_timer))
 
 	for group in wave.enemies:
-		print("creating timer")
 		group.spawned = 0  # reset count
 
 		var interval = wave.duration / group.count
@@ -49,7 +44,6 @@ func start_wave(index: int):
 		timer.autostart = true
 		add_child(timer)
 		active_timers.append(timer)
-		print("Timer created for group with count:", group.count)
 
 		# Capture group reference for this timer
 		timer.connect("timeout", Callable(self, "_on_enemy_timer_timeout").bind(group, timer))
@@ -60,7 +54,6 @@ func _on_enemy_timer_timeout(group: EnemySpawnData, timer: Timer):
 		timer.stop()
 		timer.queue_free()
 		active_timers.erase(timer)
-	print("Timer fired for group:", group)
 
 
 	var enemy = group.enemy_scene.instantiate()
@@ -69,7 +62,6 @@ func _on_enemy_timer_timeout(group: EnemySpawnData, timer: Timer):
 	#enemy.global_position = Vector2(500, 500)
 
 	group.spawned += 1
-	print("Spawned enemy")
 
 func on_wave_timer_timeout(wave_timer: Timer):
 	wave_in_progress = false
@@ -78,7 +70,6 @@ func on_wave_timer_timeout(wave_timer: Timer):
 	if current_wave_index < waves.size():
 		start_wave(current_wave_index)
 	else:
-		print("All waves completed")
 		GameScript.level_finished = true
 
 
