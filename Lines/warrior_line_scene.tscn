@@ -11,6 +11,7 @@ troop = ExtResource("2_toalh")
 total_troops = 8
 
 [node name="ControlPoint" parent="." instance=ExtResource("2_y4flx")]
+position = Vector2(160, 98)
 
 [node name="ControlPoint2" parent="." instance=ExtResource("2_y4flx")]
-position = Vector2(0, 200)
+position = Vector2(73, 192)

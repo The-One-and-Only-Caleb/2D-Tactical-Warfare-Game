@@ -30,5 +30,6 @@ func spawn_troops():
 		var new_troop = troop.instantiate()
 		new_troop.init(troops_count, total_troops, get_point_position(0), get_point_position(1))  # Pass index and total count
 		add_child(new_troop)
+		new_troop.global_position = global_position
 		troops_count += 1
 		

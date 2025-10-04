@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 
 		velocity = direction * speed
 		
-		if global_position.distance_to(enemy_objective.global_position) < 5:
+		if global_position.distance_to(enemy_objective.global_position) < 20:
 			GameScript.health -= 1
 			queue_free()
 
