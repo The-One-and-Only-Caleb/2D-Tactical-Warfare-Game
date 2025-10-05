@@ -1,7 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://drjbugic557le"]
+[gd_scene load_steps=22 format=3 uid="uid://drjbugic557le"]
 
 [ext_resource type="Script" path="res://Troops/warrior.gd" id="1_c4xnl"]
 [ext_resource type="Texture2D" uid="uid://ei02cd2xvama" path="res://Troops/Birds eye Hammer Knight Attack-Sheet.png" id="2_d7u6p"]
+[ext_resource type="Script" path="res://hitbox.gd" id="3_34o3b"]
+[ext_resource type="Script" path="res://Hurtbox.gd" id="4_ywflw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_435w8"]
 radius = 6.08276
@@ -151,7 +153,7 @@ _data = {
 scale = Vector2(2, 2)
 collision_layer = 9
 script = ExtResource("1_c4xnl")
-health = 15
+health = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 0)
@@ -164,6 +166,9 @@ animation = &"Attack"
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("3_34o3b")
+damage = 4
+knockback = 80
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(23.375, 2)
@@ -173,6 +178,7 @@ disabled = true
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
+script = ExtResource("4_ywflw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(6.5, 0.5)
@@ -200,5 +206,9 @@ shape = SubResource("RectangleShape2D_malu4")
 libraries = {
 "": SubResource("AnimationLibrary_piphj")
 }
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+position = Vector2(6.5, 0.5)
+radius = 141.05
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

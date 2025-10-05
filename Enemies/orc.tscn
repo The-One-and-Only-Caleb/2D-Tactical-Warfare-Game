@@ -1,7 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvty1hlvmslmd"]
+[gd_scene load_steps=18 format=3 uid="uid://cvty1hlvmslmd"]
 
 [ext_resource type="Script" path="res://Enemies/orc.gd" id="1_34f5p"]
 [ext_resource type="Texture2D" uid="uid://do3feapahq30k" path="res://Enemies/Birds eye Orc Attack-Sheet.png" id="1_au7pc"]
+[ext_resource type="Script" path="res://hitbox.gd" id="3_ud527"]
+[ext_resource type="Script" path="res://Hurtbox.gd" id="4_6nc18"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_swrbo"]
 atlas = ExtResource("1_au7pc")
@@ -117,7 +119,7 @@ size = Vector2(19, 40)
 radius = 18.3848
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vue0g"]
-radius = 148.337
+radius = 40.0125
 
 [node name="Orc" type="CharacterBody2D"]
 collision_layer = 17
@@ -141,6 +143,8 @@ libraries = {
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("3_ud527")
+damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(15, 2)
@@ -150,6 +154,7 @@ disabled = true
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
+script = ExtResource("4_6nc18")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_023ol")
@@ -172,10 +177,16 @@ position = Vector2(15, 2)
 shape = SubResource("RectangleShape2D_34wsi")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 300.0
+neighbor_distance = 800.0
+time_horizon_obstacles = 6.0
+debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
 autostart = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

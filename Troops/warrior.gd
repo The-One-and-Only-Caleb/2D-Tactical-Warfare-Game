@@ -8,7 +8,7 @@ var total_troop_count
 
 var start_point
 var end_point
-@export var health = 5
+@export var health = 4
 
 func init(number, count, start, end) -> void:
 	troop_number = number
@@ -55,7 +55,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	
-func _on_hurtbox_area_entered(area: Area2D) -> void:
-	health -= 1
+func take_damage(amount: int, position: Vector2, knockback: int):
+	# Damage
+	health -= amount
+	# Knockback
+	var direction = (global_position - position).normalized()
+	velocity = direction * knockback
+	
+	# Removing if dead
 	if health < 1:
 		queue_free()
