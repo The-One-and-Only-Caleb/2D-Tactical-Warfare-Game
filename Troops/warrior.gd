@@ -58,6 +58,7 @@ func _physics_process(delta: float) -> void:
 func take_damage(amount: int, position: Vector2, knockback: int):
 	# Damage
 	health -= amount
+	get_node("Hurt").play()
 	# Knockback
 	var direction = (global_position - position).normalized()
 	velocity = direction * knockback

@@ -1,9 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://cvty1hlvmslmd"]
+[gd_scene load_steps=20 format=3 uid="uid://cvty1hlvmslmd"]
 
 [ext_resource type="Script" path="res://Enemies/orc.gd" id="1_34f5p"]
 [ext_resource type="Texture2D" uid="uid://do3feapahq30k" path="res://Enemies/Birds eye Orc Attack-Sheet.png" id="1_au7pc"]
 [ext_resource type="Script" path="res://hitbox.gd" id="3_ud527"]
 [ext_resource type="Script" path="res://Hurtbox.gd" id="4_6nc18"]
+[ext_resource type="AudioStream" uid="uid://bwq1hthjperpe" path="res://Sound/violent-sword-slice-393839.mp3" id="5_vk8ks"]
+[ext_resource type="AudioStream" uid="uid://cx6ydgwieu3lm" path="res://Sound/ough-47202.mp3" id="6_bpjqh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_swrbo"]
 atlas = ExtResource("1_au7pc")
@@ -90,6 +92,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Attack:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_vunrs"]
 length = 0.001
@@ -104,6 +118,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Attack:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_maleo"]
@@ -181,11 +207,18 @@ avoidance_enabled = true
 radius = 300.0
 neighbor_distance = 800.0
 time_horizon_obstacles = 6.0
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
 autostart = true
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_vk8ks")
+volume_db = -8.0
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_bpjqh")
+volume_db = -3.0
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

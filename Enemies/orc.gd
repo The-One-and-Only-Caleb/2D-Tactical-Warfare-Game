@@ -69,6 +69,7 @@ func makepath():
 func take_damage(amount: int, position: Vector2, knockback: int):
 	# Damage
 	health -= amount
+	$Hurt.play()
 	# Knockback
 	var direction = (global_position - position).normalized()
 	knockback_velocity = direction * knockback

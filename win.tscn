@@ -17,3 +17,17 @@ offset_right = 1157.0
 offset_bottom = 385.0
 theme_override_font_sizes/font_size = 50
 text = "Thank you for playing this buggy prototype!"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 100.0
+offset_top = 482.0
+offset_right = 2434.0
+offset_bottom = 983.0
+theme_override_font_sizes/font_size = 50
+text = "Credits:
+
+Tileset: For now the tileset is a free, open sourced tileset found on itch.io for prototype purposes.
+
+Sound effects: Found on Pixabay, free and use is adhering to the Pixabay license.
+
+The music and textures for enemies and troops was all done by me. "

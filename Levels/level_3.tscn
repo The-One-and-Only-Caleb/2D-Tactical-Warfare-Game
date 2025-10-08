@@ -43,7 +43,7 @@ enemies = Array[ExtResource("6_7h5pt")]([SubResource("Resource_1p71d")])
 [sub_resource type="Resource" id="Resource_61gft"]
 script = ExtResource("6_7h5pt")
 enemy_scene = ExtResource("7_p3h01")
-count = 12
+count = 8
 
 [sub_resource type="Resource" id="Resource_b52qu"]
 script = ExtResource("5_80wkl")

@@ -1,9 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://drjbugic557le"]
+[gd_scene load_steps=24 format=3 uid="uid://drjbugic557le"]
 
 [ext_resource type="Script" path="res://Troops/warrior.gd" id="1_c4xnl"]
 [ext_resource type="Texture2D" uid="uid://ei02cd2xvama" path="res://Troops/Birds eye Hammer Knight Attack-Sheet.png" id="2_d7u6p"]
 [ext_resource type="Script" path="res://hitbox.gd" id="3_34o3b"]
 [ext_resource type="Script" path="res://Hurtbox.gd" id="4_ywflw"]
+[ext_resource type="AudioStream" uid="uid://b41yerv1xp511" path="res://Sound/woosh-2-6471.mp3" id="5_wxdpn"]
+[ext_resource type="AudioStream" uid="uid://cx6ydgwieu3lm" path="res://Sound/ough-47202.mp3" id="6_ncanh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_435w8"]
 radius = 6.08276
@@ -127,6 +129,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Attack:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.36667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_ynr2e"]
 length = 0.001
@@ -141,6 +155,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Attack:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_piphj"]
@@ -162,6 +188,7 @@ shape = SubResource("CircleShape2D_435w8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mpmio")
 animation = &"Attack"
+frame = 1
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -210,5 +237,12 @@ libraries = {
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 position = Vector2(6.5, 0.5)
 radius = 141.05
+
+[node name="Attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_wxdpn")
+pitch_scale = 0.88
+
+[node name="Hurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ncanh")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
