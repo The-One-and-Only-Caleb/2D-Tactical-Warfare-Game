@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1jisypa4ng7i"]
+[gd_scene load_steps=17 format=3 uid="uid://c1jisypa4ng7i"]
 
 [ext_resource type="PackedScene" uid="uid://clt1jc8o3nibg" path="res://Levels/tile_map.tscn" id="1_j55db"]
 [ext_resource type="PackedScene" uid="uid://dsorqpeo6fm4" path="res://Lines/warrior_line_scene.tscn" id="2_6u3q0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://EnemyData.gd" id="6_itqom"]
 [ext_resource type="PackedScene" uid="uid://cvty1hlvmslmd" path="res://Enemies/orc.tscn" id="7_rd202"]
 [ext_resource type="AudioStream" uid="uid://dk4v3xdagxb52" path="res://Sound/Line_Legion_Title_Music.ogg" id="8_t1crq"]
+[ext_resource type="PackedScene" uid="uid://i6ympwgt34r1" path="res://Lines/arrow_caster_line_scene.tscn" id="9_xd2ta"]
 
 [sub_resource type="Resource" id="Resource_8w0p2"]
 script = ExtResource("6_itqom")
@@ -86,3 +87,6 @@ stream = ExtResource("8_t1crq")
 volume_db = 0.7
 autoplay = true
 bus = &"Music"
+
+[node name="Warrior Line2" parent="." instance=ExtResource("9_xd2ta")]
+position = Vector2(725, 177)

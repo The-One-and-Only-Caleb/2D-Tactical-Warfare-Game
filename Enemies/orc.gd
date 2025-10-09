@@ -73,7 +73,6 @@ func take_damage(amount: int, position: Vector2, knockback: int):
 	# Knockback
 	var direction = (global_position - position).normalized()
 	knockback_velocity = direction * knockback
-	print(knockback_velocity)
 	
 	# Removing if dead
 	if health < 1:
