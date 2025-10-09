@@ -12,6 +12,7 @@ var end_point
 
 @export var projectile := "res://Troops/arrow.tscn"
 
+
 func init(number, count, start, end) -> void:
 	troop_number = number
 	total_troop_count = count

@@ -23,6 +23,7 @@ offset_bottom = 1805.0
 color = Color(0.172549, 0.717647, 0.129412, 1)
 
 [node name="Title" type="Label" parent="ColorRect"]
+layout_mode = 0
 offset_left = 53.0
 offset_top = -23.0
 offset_right = 3128.0
@@ -43,12 +44,14 @@ scale = Vector2(40, 40)
 texture = ExtResource("2_hf8f2")
 
 [node name="Play" type="Button" parent="ColorRect"]
+layout_mode = 0
 offset_left = 1382.0
 offset_top = 528.0
 offset_right = 2201.0
 offset_bottom = 978.0
 
 [node name="Label" type="Label" parent="ColorRect/Play"]
+layout_mode = 0
 offset_left = 38.0
 offset_top = 19.0
 offset_right = 641.0
@@ -57,12 +60,14 @@ text = "Play"
 label_settings = SubResource("LabelSettings_2rfoq")
 
 [node name="Settings" type="Button" parent="ColorRect"]
+layout_mode = 0
 offset_left = 1372.0
 offset_top = 1072.0
 offset_right = 2614.0
 offset_bottom = 1534.0
 
 [node name="Label" type="Label" parent="ColorRect/Settings"]
+layout_mode = 0
 offset_left = 28.0
 offset_top = 27.0
 offset_right = 1189.0

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://hitbox.gd" id="3_unuyq"]
 [ext_resource type="Script" path="res://Hurtbox.gd" id="4_titbi"]
 [ext_resource type="AudioStream" uid="uid://k8aye8iuuoem" path="res://Sound/sword-sound-260274.mp3" id="5_lnd5p"]
-[ext_resource type="AudioStream" uid="uid://cx6ydgwieu3lm" path="res://Sound/ough-47202.mp3" id="6_5rw0t"]
+[ext_resource type="AudioStream" uid="uid://sfeo8lmcn3m7" path="res://Sound/Hurt.mp3" id="6_eksqp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_435w8"]
 radius = 6.08276
@@ -218,8 +218,8 @@ stream = ExtResource("5_lnd5p")
 bus = &"SFX"
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_5rw0t")
-volume_db = -3.0
+stream = ExtResource("6_eksqp")
+volume_db = -6.0
 bus = &"SFX"
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

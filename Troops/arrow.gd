@@ -1,20 +1,28 @@
 extends CharacterBody2D
 
-const speed = 300
+const speed = 10
 
+var destroying = false
 
 
 func _physics_process(delta: float) -> void:
+	if destroying == true:
+		queue_free()
 	var nearest_body = get_nearest_body()
 	if nearest_body:
 		var target_position = nearest_body.global_position
 		
-		velocity += (target_position - global_position).normalized() * speed
+		var collision = move_and_collide((target_position - global_position).normalized() * speed)
+		
+		if collision:
+			if collision.get_collider().collision_layer & (1 << 3):
+				return  # Ignore layer 4
+			destroying = true
+
+		
 	else:
-		print("arrow couldn't find target")
 		$"Grace Timer".start()
 		
-	move_and_slide()
 
 	
 
@@ -28,15 +36,7 @@ func get_nearest_body():
 		if distance < min_distance:
 			min_distance = distance
 			nearest = body
-			
-	print(nearest)
 	return nearest
-
-
-func _on_destruction_box_body_entered(body: Node2D) -> void:
-	print("arrow hit object")
-	queue_free()
-
 
 func _on_grace_timer_timeout() -> void:
 	var nearest_body = get_nearest_body()

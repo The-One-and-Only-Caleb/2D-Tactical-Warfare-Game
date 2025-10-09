@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://hitbox.gd" id="3_ud527"]
 [ext_resource type="Script" path="res://Hurtbox.gd" id="4_6nc18"]
 [ext_resource type="AudioStream" uid="uid://bwq1hthjperpe" path="res://Sound/violent-sword-slice-393839.mp3" id="5_vk8ks"]
-[ext_resource type="AudioStream" uid="uid://cx6ydgwieu3lm" path="res://Sound/ough-47202.mp3" id="6_bpjqh"]
+[ext_resource type="AudioStream" uid="uid://sfeo8lmcn3m7" path="res://Sound/Hurt.mp3" id="6_boyxu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_swrbo"]
 atlas = ExtResource("1_au7pc")
@@ -218,8 +218,8 @@ volume_db = -8.0
 bus = &"SFX"
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_bpjqh")
-volume_db = -3.0
+stream = ExtResource("6_boyxu")
+volume_db = -6.0
 bus = &"SFX"
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
