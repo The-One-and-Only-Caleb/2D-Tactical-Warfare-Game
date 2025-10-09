@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://to5fi3jd67l4" path="res://Troops/arrow_caster.tscn" id="2_6kq01"]
 [ext_resource type="PackedScene" uid="uid://ditc3lq1ava0i" path="res://control_point.tscn" id="3_bdw2f"]
 
-[node name="Warrior Line" type="Line2D"]
+[node name="Arrow Caster Line" type="Line2D"]
 points = PackedVector2Array(0, 0, 0, 100)
 script = ExtResource("1_h2wat")
 troop = ExtResource("2_6kq01")
