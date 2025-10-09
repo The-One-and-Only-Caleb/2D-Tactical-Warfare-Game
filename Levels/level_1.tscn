@@ -85,3 +85,4 @@ mesh = SubResource("SphereMesh_1wfx1")
 stream = ExtResource("8_t1crq")
 volume_db = 0.7
 autoplay = true
+bus = &"Music"

@@ -215,10 +215,12 @@ autostart = true
 [node name="Attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_vk8ks")
 volume_db = -8.0
+bus = &"SFX"
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_bpjqh")
 volume_db = -3.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcmekgfbs7b4r"]
+
+[ext_resource type="Texture2D" uid="uid://djcjph7gppvhg" path="res://images/Top Down Soldier.png" id="1_mmxpr"]
+[ext_resource type="Script" path="res://home_screen.gd" id="1_y6oee"]
+[ext_resource type="Texture2D" uid="uid://rkkg63w51gh4" path="res://images/Birds eye Orc.png" id="2_hf8f2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ktbs0"]
+font_size = 400
+outline_size = 100
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2rfoq"]
+font_size = 300
+outline_size = 80
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Home Screen" type="Node2D"]
+script = ExtResource("1_y6oee")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 3070.0
+offset_bottom = 1805.0
+color = Color(0.172549, 0.717647, 0.129412, 1)
+
+[node name="Title" type="Label" parent="ColorRect"]
+offset_left = 53.0
+offset_top = -23.0
+offset_right = 3128.0
+offset_bottom = 659.0
+text = "LINE LEGION"
+label_settings = SubResource("LabelSettings_ktbs0")
+
+[node name="TopDownSoldier" type="Sprite2D" parent="ColorRect"]
+position = Vector2(297, 1156)
+rotation = -0.337778
+scale = Vector2(40, 40)
+texture = ExtResource("1_mmxpr")
+
+[node name="BirdsEyeOrc" type="Sprite2D" parent="ColorRect"]
+position = Vector2(998, 805)
+rotation = 2.5072
+scale = Vector2(40, 40)
+texture = ExtResource("2_hf8f2")
+
+[node name="Play" type="Button" parent="ColorRect"]
+offset_left = 1382.0
+offset_top = 528.0
+offset_right = 2201.0
+offset_bottom = 978.0
+
+[node name="Label" type="Label" parent="ColorRect/Play"]
+offset_left = 38.0
+offset_top = 19.0
+offset_right = 641.0
+offset_bottom = 428.0
+text = "Play"
+label_settings = SubResource("LabelSettings_2rfoq")
+
+[node name="Settings" type="Button" parent="ColorRect"]
+offset_left = 1372.0
+offset_top = 1072.0
+offset_right = 2614.0
+offset_bottom = 1534.0
+
+[node name="Label" type="Label" parent="ColorRect/Settings"]
+offset_left = 28.0
+offset_top = 27.0
+offset_right = 1189.0
+offset_bottom = 436.0
+text = "Settings"
+label_settings = SubResource("LabelSettings_2rfoq")
+
+[connection signal="pressed" from="ColorRect/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="ColorRect/Settings" to="." method="_on_settings_pressed"]

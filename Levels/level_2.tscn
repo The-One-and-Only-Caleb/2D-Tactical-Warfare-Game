@@ -78,3 +78,4 @@ position = Vector2(703, 105)
 stream = ExtResource("9_eh5os")
 volume_db = 0.7
 autoplay = true
+bus = &"Music"

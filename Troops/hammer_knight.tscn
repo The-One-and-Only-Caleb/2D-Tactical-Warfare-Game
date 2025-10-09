@@ -241,8 +241,10 @@ radius = 141.05
 [node name="Attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_wxdpn")
 pitch_scale = 0.88
+bus = &"SFX"
 
 [node name="Hurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_ncanh")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
