@@ -179,7 +179,7 @@ _data = {
 scale = Vector2(2, 2)
 collision_layer = 9
 script = ExtResource("1_c4xnl")
-health = 20
+health = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 0)

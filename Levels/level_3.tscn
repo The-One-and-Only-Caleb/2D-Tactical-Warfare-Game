@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://chl6hsbsxfarm"]
+[gd_scene load_steps=22 format=3 uid="uid://chl6hsbsxfarm"]
 
 [ext_resource type="PackedScene" uid="uid://clt1jc8o3nibg" path="res://Levels/tile_map.tscn" id="1_xwyep"]
 [ext_resource type="PackedScene" uid="uid://dsorqpeo6fm4" path="res://Lines/warrior_line_scene.tscn" id="2_38agw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://wave_controller.gd" id="4_vq6vd"]
 [ext_resource type="Script" path="res://WaveData.gd" id="5_80wkl"]
 [ext_resource type="Script" path="res://EnemyData.gd" id="6_7h5pt"]
+[ext_resource type="PackedScene" uid="uid://ceud3t23b28qo" path="res://Levels/health_bar.tscn" id="7_m7s72"]
 [ext_resource type="PackedScene" uid="uid://cvty1hlvmslmd" path="res://Enemies/orc.tscn" id="7_p3h01"]
 [ext_resource type="PackedScene" uid="uid://b2xrgxhwbr3i3" path="res://Lines/hammer_knight_line_scene.tscn" id="8_18b2k"]
 [ext_resource type="AudioStream" uid="uid://dk4v3xdagxb52" path="res://Sound/Line_Legion_Title_Music.ogg" id="9_ft08t"]
@@ -23,7 +24,7 @@ enemies = Array[ExtResource("6_7h5pt")]([SubResource("Resource_8w0p2")])
 [sub_resource type="Resource" id="Resource_6qw0o"]
 script = ExtResource("6_7h5pt")
 enemy_scene = ExtResource("7_p3h01")
-count = 7
+count = 9
 
 [sub_resource type="Resource" id="Resource_rjuo2"]
 script = ExtResource("5_80wkl")
@@ -33,7 +34,7 @@ enemies = Array[ExtResource("6_7h5pt")]([SubResource("Resource_6qw0o")])
 [sub_resource type="Resource" id="Resource_1p71d"]
 script = ExtResource("6_7h5pt")
 enemy_scene = ExtResource("7_p3h01")
-count = 12
+count = 15
 
 [sub_resource type="Resource" id="Resource_3tj7v"]
 script = ExtResource("5_80wkl")
@@ -43,7 +44,7 @@ enemies = Array[ExtResource("6_7h5pt")]([SubResource("Resource_1p71d")])
 [sub_resource type="Resource" id="Resource_61gft"]
 script = ExtResource("6_7h5pt")
 enemy_scene = ExtResource("7_p3h01")
-count = 8
+count = 12
 
 [sub_resource type="Resource" id="Resource_b52qu"]
 script = ExtResource("5_80wkl")
@@ -85,6 +86,9 @@ position = Vector2(151, 428)
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Enemy_objective"]
 self_modulate = Color(0.13, 0.391, 1, 1)
 mesh = SubResource("SphereMesh_1wfx1")
+
+[node name="HealthBar" parent="Enemy_objective" instance=ExtResource("7_m7s72")]
+position = Vector2(0, -66)
 
 [node name="Warrior Line2" parent="." instance=ExtResource("2_38agw")]
 position = Vector2(521, 339)

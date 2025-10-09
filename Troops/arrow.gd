@@ -15,9 +15,14 @@ func _physics_process(delta: float) -> void:
 		var collision = move_and_collide((target_position - global_position).normalized() * speed)
 		
 		if collision:
-			if collision.get_collider().collision_layer & (1 << 3):
-				return  # Ignore layer 4
-			destroying = true
+			var collider = collision.get_collider()
+			if collider is PhysicsBody2D or collider is Area2D:
+				if collision.get_collider().collision_layer & (1 << 3):
+					return  # Ignore layer 4
+				destroying = true
+			else:
+				queue_free()
+				# This will happen if projectile collides with tilemap
 
 		
 	else:

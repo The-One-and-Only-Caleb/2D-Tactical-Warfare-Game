@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cc4rl27mgy8qj"]
+[gd_scene load_steps=18 format=3 uid="uid://cc4rl27mgy8qj"]
 
 [ext_resource type="PackedScene" uid="uid://clt1jc8o3nibg" path="res://Levels/tile_map.tscn" id="1_fiwhf"]
 [ext_resource type="PackedScene" uid="uid://du1p0uxokbkip" path="res://camera_scene.tscn" id="3_c4wkf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://WaveData.gd" id="5_jek8a"]
 [ext_resource type="Script" path="res://EnemyData.gd" id="6_r64t0"]
 [ext_resource type="PackedScene" uid="uid://cvty1hlvmslmd" path="res://Enemies/orc.tscn" id="7_fg2cl"]
+[ext_resource type="PackedScene" uid="uid://ceud3t23b28qo" path="res://Levels/health_bar.tscn" id="7_w5nc0"]
 [ext_resource type="PackedScene" uid="uid://b2xrgxhwbr3i3" path="res://Lines/hammer_knight_line_scene.tscn" id="8_rukd7"]
 [ext_resource type="AudioStream" uid="uid://dk4v3xdagxb52" path="res://Sound/Line_Legion_Title_Music.ogg" id="9_eh5os"]
 
@@ -70,6 +71,9 @@ position = Vector2(136, 257)
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Enemy_objective"]
 self_modulate = Color(0.13, 0.391, 1, 1)
 mesh = SubResource("SphereMesh_1wfx1")
+
+[node name="HealthBar" parent="Enemy_objective" instance=ExtResource("7_w5nc0")]
+position = Vector2(-1, -59)
 
 [node name="Warrior Line3" parent="." instance=ExtResource("8_rukd7")]
 position = Vector2(703, 105)

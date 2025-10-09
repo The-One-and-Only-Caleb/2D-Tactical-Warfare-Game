@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://drjbugic557le" path="res://Troops/hammer_knight.tscn" id="2_3jamw"]
 [ext_resource type="PackedScene" uid="uid://ditc3lq1ava0i" path="res://control_point.tscn" id="3_3hdci"]
 
-[node name="Warrior Line" type="Line2D"]
+[node name="Hammer Knight Line" type="Line2D"]
 points = PackedVector2Array(0, 0, 0, 100)
 script = ExtResource("1_0jrtr")
 troop = ExtResource("2_3jamw")
