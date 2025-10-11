@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=3 uid="uid://desil2c8y5588"]
 
-[ext_resource type="Script" path="res://Enemies/orc.gd" id="1_jkc4r"]
+[ext_resource type="Script" path="res://Enemies/ranged_enemy.gd" id="1_e6gou"]
 [ext_resource type="Texture2D" uid="uid://84arj4jck05d" path="res://Enemies/Birds eye cannoneer attack-Sheet.png" id="2_46j03"]
 [ext_resource type="Script" path="res://Hurtbox.gd" id="4_lp0sp"]
 [ext_resource type="AudioStream" uid="uid://bwq1hthjperpe" path="res://Sound/violent-sword-slice-393839.mp3" id="5_f0s1t"]
@@ -237,6 +237,20 @@ tracks/1/keys = {
 "update": 1,
 "values": ["Attack"]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.13333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot_projectile"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w8oyr"]
 _data = {
@@ -247,15 +261,15 @@ _data = {
 collision_layer = 17
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_jkc4r")
+script = ExtResource("1_e6gou")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_kxnyl")
 animation = &"Attack"
-frame = 14
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_80p33")
 
@@ -265,6 +279,7 @@ collision_mask = 2
 script = ExtResource("4_lp0sp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+visible = false
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_fgfue")
 debug_color = Color(0.963461, 0.176614, 0.196019, 0.42)
@@ -274,6 +289,7 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detectionbox"]
+visible = false
 shape = SubResource("CircleShape2D_vue0g")
 debug_color = Color(0.716, 0.717, 0.988, 0.42)
 
@@ -286,9 +302,10 @@ shape = SubResource("CircleShape2D_w4apy")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
-radius = 300.0
+radius = 500.0
 neighbor_distance = 800.0
 time_horizon_obstacles = 6.0
+debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
@@ -308,6 +325,9 @@ bus = &"SFX"
 libraries = {
 "": SubResource("AnimationLibrary_w8oyr")
 }
+
+[node name="Shoot Point" type="Marker2D" parent="."]
+position = Vector2(55, 0)
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

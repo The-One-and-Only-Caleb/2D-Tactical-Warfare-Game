@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const speed = 400.0
+@export var speed = 400.0
 
 var troop_number
 var total_troop_count
@@ -9,6 +9,8 @@ var total_troop_count
 var start_point
 var end_point
 @export var health = 4
+var knockback_velocity: Vector2 = Vector2.ZERO
+@export var knockback_decay: float = 80.0  # higher = faster decay
 
 func init(number, count, start, end) -> void:
 	troop_number = number
@@ -26,12 +28,17 @@ func _physics_process(delta: float) -> void:
 	var target_position = start_point.lerp(end_point, placement_ratio)
 	var to_target = target_position - position
 	var distance = to_target.length()
-	if distance > 5.0:
-		var direction = to_target.normalized()
-		velocity = direction * speed
+	if knockback_velocity.length() > 2:
+		velocity = knockback_velocity
 	else:
-		velocity = Vector2.ZERO
-		position = target_position  # Snap to final position
+		if distance > 5.0:
+			var direction = to_target.normalized()
+			velocity = direction * speed
+		else:
+			velocity = Vector2.ZERO
+			position = target_position  # Snap to final position
+	
+	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
 		
 	# Targeting
 	if not $Rangebox.get_overlapping_bodies():

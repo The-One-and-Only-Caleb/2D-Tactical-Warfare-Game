@@ -12,7 +12,7 @@ func _physics_process(delta: float) -> void:
 	if nearest_body:
 		var target_position = nearest_body.global_position
 		
-		var collision = move_and_collide((target_position - global_position).normalized() * speed)
+		var collision = move_and_collide((target_position - global_position).normalized() * speed * delta)
 		
 		if collision:
 			var collider = collision.get_collider()
