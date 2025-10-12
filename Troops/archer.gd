@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const speed = 400.0
+@export var speed = 300.0
 
 var troop_number
 var total_troop_count
