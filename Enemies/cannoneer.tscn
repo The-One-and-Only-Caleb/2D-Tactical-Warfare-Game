@@ -208,11 +208,10 @@ height = 104.0
 radius = 503.918
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w4apy"]
-radius = 560.044
+radius = 504.0
 
 [sub_resource type="Animation" id="Animation_aa2te"]
 length = 5.2
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -267,6 +266,7 @@ script = ExtResource("1_e6gou")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_kxnyl")
 animation = &"Attack"
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -289,7 +289,6 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detectionbox"]
-visible = false
 shape = SubResource("CircleShape2D_vue0g")
 debug_color = Color(0.716, 0.717, 0.988, 0.42)
 

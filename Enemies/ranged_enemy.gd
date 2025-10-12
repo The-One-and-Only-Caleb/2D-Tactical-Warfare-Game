@@ -43,6 +43,7 @@ func _physics_process(delta: float) -> void:
 		velocity = knockback_velocity
 		if not $AnimationPlayer.is_playing():
 			$AnimationPlayer.play("Attack")
+			print("attacking")
 	else:
 		var target = $NavigationAgent2D.get_next_path_position()
 		var direction = (target - global_position).normalized()

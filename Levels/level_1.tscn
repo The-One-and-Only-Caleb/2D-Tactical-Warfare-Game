@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c1jisypa4ng7i"]
+[gd_scene load_steps=17 format=3 uid="uid://c1jisypa4ng7i"]
 
 [ext_resource type="PackedScene" uid="uid://clt1jc8o3nibg" path="res://Levels/tile_map.tscn" id="1_j55db"]
 [ext_resource type="PackedScene" uid="uid://dsorqpeo6fm4" path="res://Lines/warrior_line_scene.tscn" id="2_6u3q0"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://EnemyData.gd" id="6_itqom"]
 [ext_resource type="PackedScene" uid="uid://cvty1hlvmslmd" path="res://Enemies/orc.tscn" id="7_rd202"]
 [ext_resource type="PackedScene" uid="uid://ceud3t23b28qo" path="res://Levels/health_bar.tscn" id="8_6p57w"]
-[ext_resource type="PackedScene" uid="uid://desil2c8y5588" path="res://Enemies/cannoneer.tscn" id="8_l14cv"]
 [ext_resource type="AudioStream" uid="uid://dk4v3xdagxb52" path="res://Sound/Line_Legion_Title_Music.ogg" id="8_t1crq"]
 
 [sub_resource type="Resource" id="Resource_8w0p2"]
@@ -31,19 +30,9 @@ script = ExtResource("5_m7x74")
 duration = 3.0
 enemies = Array[ExtResource("6_itqom")]([SubResource("Resource_cdwug")])
 
-[sub_resource type="Resource" id="Resource_ur3or"]
-script = ExtResource("6_itqom")
-enemy_scene = ExtResource("8_l14cv")
-count = 5
-
-[sub_resource type="Resource" id="Resource_icagp"]
-script = ExtResource("5_m7x74")
-duration = 10.0
-enemies = Array[ExtResource("6_itqom")]([SubResource("Resource_ur3or")])
-
 [sub_resource type="Resource" id="Resource_n4jmp"]
 script = ExtResource("5_m7x74")
-duration = 120.0
+duration = 10.0
 enemies = Array[ExtResource("6_itqom")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_po8y0"]
@@ -80,7 +69,7 @@ position = Vector2(921, 246)
 [node name="Wave_Controller" type="Area2D" parent="."]
 position = Vector2(2204, 281)
 script = ExtResource("4_18ux5")
-waves = Array[ExtResource("5_m7x74")]([SubResource("Resource_ntovb"), SubResource("Resource_446uj"), SubResource("Resource_icagp"), SubResource("Resource_n4jmp")])
+waves = Array[ExtResource("5_m7x74")]([SubResource("Resource_ntovb"), SubResource("Resource_446uj"), SubResource("Resource_n4jmp")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wave_Controller"]
 position = Vector2(-3, 3)
