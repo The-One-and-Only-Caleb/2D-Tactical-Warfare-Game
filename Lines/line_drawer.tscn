@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7lp8f0ggfc0l"]
+
+[ext_resource type="Script" path="res://Lines/line_drawer.gd" id="1_74vm3"]
+
+[node name="LineDrawer" type="Node2D"]
+script = ExtResource("1_74vm3")
+
+[node name="Line2D" type="Line2D" parent="."]

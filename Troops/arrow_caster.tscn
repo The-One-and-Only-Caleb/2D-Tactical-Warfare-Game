@@ -162,7 +162,7 @@ shape = SubResource("CircleShape2D_435w8")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_mpmio")
 animation = &"Attack"
-frame = 9
+frame = 7
 
 [node name="Detectionbox" type="Area2D" parent="."]
 collision_layer = 0
