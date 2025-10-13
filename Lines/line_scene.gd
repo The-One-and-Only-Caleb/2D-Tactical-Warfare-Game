@@ -16,14 +16,21 @@ func _ready():
 	for cp in control_points:
 		initial_points.append(cp.global_position)
 	points = initial_points
+	print("function ready called")
+	print(points)
+	
+	$ControlPoint.global_position = points[0]
+	$ControlPoint2.global_position = points[1]
 	
 	spawn_troops()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	print("points overwritten")
 	set_point_position(0, $ControlPoint.position)
 	set_point_position(1, $ControlPoint2.position)
+	print(points)
 		
 func spawn_troops():
 	for i in range(0, total_troops):

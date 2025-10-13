@@ -55,8 +55,14 @@ func finish_drawing():
 	emit_signal("line_drawn", points)
 	
 	var new_line = load("res://Lines/warrior_line_scene.tscn").instantiate()
+	new_line.clear_points()
+	new_line.add_point(Vector2.ZERO)  # placeholder
+	new_line.add_point(Vector2.ZERO)
+	new_line.set_point_position(0, points[0])
+	new_line.set_point_position(1, points[1])
 	get_tree().current_scene.add_child(new_line)
-	new_line.points = $Line2D.points
+	print("New Line points: " + str(new_line.points))
+	print("Old line points: " + str(points))
 	#queue_free()
 
 func cancel_drawing():
