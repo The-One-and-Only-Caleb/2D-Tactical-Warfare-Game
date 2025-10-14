@@ -9,13 +9,8 @@ var troops_count = 0
 
 
 func _ready():
-	points = [Vector2(100, 200), Vector2(100, 300)]
 	control_points = [$ControlPoint, $ControlPoint2]
 	# Initialize the line with the correct number of points
-	var initial_points := []
-	for cp in control_points:
-		initial_points.append(cp.global_position)
-	points = initial_points
 	print("function ready called")
 	print(points)
 	
@@ -37,6 +32,6 @@ func spawn_troops():
 		var new_troop = troop.instantiate()
 		new_troop.init(troops_count, total_troops, get_point_position(0), get_point_position(1))  # Pass index and total count
 		add_child(new_troop)
-		new_troop.global_position = global_position
+		new_troop.global_position = $ControlPoint.global_position
 		troops_count += 1
 		
