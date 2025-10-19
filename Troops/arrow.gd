@@ -10,10 +10,10 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 	var nearest_body = get_nearest_body()
 	if nearest_body:
+		look_at(nearest_body.global_position)
 		var target_position = nearest_body.global_position
 		
 		var collision = move_and_collide((target_position - global_position).normalized() * speed * delta)
-		
 		if collision:
 			var collider = collision.get_collider()
 			if collider is PhysicsBody2D or collider is Area2D:
@@ -26,7 +26,8 @@ func _physics_process(delta: float) -> void:
 
 		
 	else:
-		$"Grace Timer".start()
+		if !$"Grace Timer".time_left > 0:
+			$"Grace Timer".start()
 		
 
 	

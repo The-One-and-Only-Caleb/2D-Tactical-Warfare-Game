@@ -4,7 +4,7 @@ var health = 5
 var level_finished = false
 var current_level = 1
 
-var money = 0
+var money = 110
 
 var level_paths = [
 	"res://Levels/level_1.tscn",

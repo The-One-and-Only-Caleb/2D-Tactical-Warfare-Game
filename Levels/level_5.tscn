@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b8q6543yd2x2b"]
+[gd_scene load_steps=25 format=3 uid="uid://b8q6543yd2x2b"]
 
 [ext_resource type="PackedScene" uid="uid://clt1jc8o3nibg" path="res://Levels/tile_map.tscn" id="1_bwj52"]
 [ext_resource type="PackedScene" uid="uid://du1p0uxokbkip" path="res://camera_scene.tscn" id="2_kckel"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://WaveData.gd" id="4_jf1o6"]
 [ext_resource type="Script" path="res://EnemyData.gd" id="5_kmjsm"]
 [ext_resource type="PackedScene" uid="uid://cvty1hlvmslmd" path="res://Enemies/orc.tscn" id="6_dheq1"]
+[ext_resource type="PackedScene" uid="uid://desil2c8y5588" path="res://Enemies/cannoneer.tscn" id="7_881f4"]
 [ext_resource type="PackedScene" uid="uid://ceud3t23b28qo" path="res://Levels/health_bar.tscn" id="7_e78qv"]
 [ext_resource type="AudioStream" uid="uid://dk4v3xdagxb52" path="res://Sound/Line_Legion_Title_Music.ogg" id="8_7hdmr"]
 [ext_resource type="PackedScene" uid="uid://dsiwkiyfene0n" path="res://shop.tscn" id="9_l17qs"]
@@ -25,20 +26,30 @@ script = ExtResource("5_kmjsm")
 enemy_scene = ExtResource("6_dheq1")
 count = 8
 
+[sub_resource type="Resource" id="Resource_md2n4"]
+script = ExtResource("5_kmjsm")
+enemy_scene = ExtResource("7_881f4")
+count = 2
+
 [sub_resource type="Resource" id="Resource_rjuo2"]
 script = ExtResource("4_jf1o6")
 duration = 5.0
-enemies = Array[ExtResource("5_kmjsm")]([SubResource("Resource_6qw0o")])
+enemies = Array[ExtResource("5_kmjsm")]([SubResource("Resource_6qw0o"), SubResource("Resource_md2n4")])
 
 [sub_resource type="Resource" id="Resource_1p71d"]
 script = ExtResource("5_kmjsm")
 enemy_scene = ExtResource("6_dheq1")
-count = 14
+count = 8
+
+[sub_resource type="Resource" id="Resource_ng18y"]
+script = ExtResource("5_kmjsm")
+enemy_scene = ExtResource("7_881f4")
+count = 2
 
 [sub_resource type="Resource" id="Resource_3tj7v"]
 script = ExtResource("4_jf1o6")
 duration = 12.0
-enemies = Array[ExtResource("5_kmjsm")]([SubResource("Resource_1p71d")])
+enemies = Array[ExtResource("5_kmjsm")]([SubResource("Resource_1p71d"), SubResource("Resource_ng18y")])
 
 [sub_resource type="Resource" id="Resource_myh23"]
 script = ExtResource("5_kmjsm")
@@ -52,7 +63,7 @@ enemies = Array[ExtResource("5_kmjsm")]([SubResource("Resource_myh23")])
 
 [sub_resource type="Resource" id="Resource_ux3eb"]
 script = ExtResource("4_jf1o6")
-duration = 12.0
+duration = 25.0
 enemies = Array[ExtResource("5_kmjsm")]([])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_po8y0"]
@@ -61,6 +72,10 @@ size = Vector2(94, 194.5)
 [sub_resource type="SphereMesh" id="SphereMesh_1wfx1"]
 radius = 30.0
 height = 60.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_vblxi"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
 
 [node name="Level 5" type="Node2D"]
 
@@ -96,3 +111,12 @@ autoplay = true
 bus = &"Music"
 
 [node name="Shop" parent="." instance=ExtResource("9_l17qs")]
+
+[node name="Instructions" type="Label" parent="."]
+offset_left = 703.0
+offset_top = 320.0
+offset_right = 2079.0
+offset_bottom = 605.0
+text = "Press the button to purchase troops. Then click where you want to place the points on the line. Remember not to waste all your money defending this level, save some for next wave!"
+label_settings = SubResource("LabelSettings_vblxi")
+autowrap_mode = 3
