@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const speed = 10
+const speed = 300
 
 var destroying = false
 

@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var health = 8
 var enemy_objective: Node2D
 
+@export var coin_drop = 1
+
 
 
 var knockback_velocity: Vector2 = Vector2.ZERO
@@ -78,6 +80,10 @@ func take_damage(amount: int, position: Vector2, knockback: int):
 	
 	# Removing if dead
 	if health < 1:
+		for i in range(coin_drop):
+			var coin = load("res://coin.tscn").instantiate()
+			get_tree().current_scene.call_deferred("add_child", coin)
+			coin.global_position = global_position
 		queue_free()
 		
 

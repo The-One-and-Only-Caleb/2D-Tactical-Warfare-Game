@@ -10,21 +10,27 @@ var start_point
 var end_point
 @export var health = 4
 
+var spawn_position
+
 @export var projectile := "res://Troops/arrow.tscn"
 
 
-func init(number, count, start, end) -> void:
+func init(number, count, spawn_pos, start, end) -> void:
 	troop_number = number
 	total_troop_count = count
 	start_point = start
 	end_point = end
+	spawn_position = spawn_pos
+	
+func _ready():
+	global_position = spawn_position
 
 func _physics_process(delta: float) -> void:
 	# Movement
 	var start_point = get_parent().get_point_position(0)
 	var end_point = get_parent().get_point_position(1)
 	# Calculate how far along the segment this troop should be placed
-	var placement_ratio = 1 - float(troop_number) / (total_troop_count - 1)
+	var placement_ratio = float(troop_number) / (total_troop_count - 1)
 	# Use linear interpolation to find the exact position
 	var target_position = start_point.lerp(end_point, placement_ratio)
 	var to_target = target_position - position
